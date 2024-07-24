@@ -96,3 +96,9 @@ server <- function(input, output) {
 
 # Create Shiny app
 shinyApp(ui = ui, server = server)
+
+
+library(rsconnect)
+rsconnect::deployApp('/Users/ayushheda/Desktop/AdvR/HW3/', appName = 'iris-app')
+
+
