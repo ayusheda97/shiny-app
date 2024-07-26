@@ -5,7 +5,7 @@ account: iris-app
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12367338
-bundleId: 8908707
+bundleId: 8908739
 url: https://iris-app.shinyapps.io/iris-app/
 version: 1
 asMultiple: FALSE

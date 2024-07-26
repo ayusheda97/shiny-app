@@ -4,16 +4,28 @@ library(shiny)
 # Define UI for the app
 ui <- fluidPage(
   titlePanel("Iris Dataset"),
-  sidebarLayout(
-    sidebarPanel(
-      numericInput("rows", "Number of rows to display:", value =5, min = 1, max = nrow(iris)),
-      selectInput("variable", "Variable for Scatter Plot:", choices = names(iris)[-5]),
-      selectInput("histVariable", "Variable for Histogram:", choices = names(iris)[sapply(iris, is.numeric)]),
+  tabsetPanel(
+    tabPanel("Description",
+             fluidRow(
+               column(12, 
+                      h3("This Shiny application visualizes the Iris dataset, providing tools to explore the relationship between Sepal Length and other variables in the dataset. Users can also view histograms of different variables and choose to include or exclude outliers in scatter plots."),
+                      img(src = 'https://media.licdn.com/dms/image/D4D12AQF5vivFTAdZjQ/article-cover_image-shrink_600_2000/0/1700911428185?e=2147483647&v=beta&t=RaJufpE5-ZMvIMZFVTy4dNtvnKHVgmThtTORx-_qu6Q', width = '100%')
+               )
+             )
     ),
-    mainPanel(
-      tableOutput("dataTable"),
-      plotOutput("scatterPlot"),
-      plotOutput("histPlot")
+    tabPanel("Data Visualization",
+             sidebarLayout(
+               sidebarPanel(
+                 numericInput("rows", "Number of rows to display:", value = 5, min = 1, max = nrow(iris)),
+                 selectInput("variable", "Variable for Scatter Plot:", choices = names(iris)[-5]),
+                 selectInput("histVariable", "Variable for Histogram:", choices = names(iris)[sapply(iris, is.numeric)]),
+               ),
+               mainPanel(
+                 tableOutput("dataTable"),
+                 plotOutput("scatterPlot"),
+                 plotOutput("histPlot")
+               )
+             )
     )
   )
 )
